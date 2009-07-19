@@ -19,6 +19,8 @@ PHRASE_BINARY = Integer("0b#{PHRASE_SHA1.to_i(base=16).to_s(2)}")
 $best_distance = 10000
 $best_content = ""
 
+$interations = 0
+
 # 10 = 1
 # 01 = 1
 # 11 = 0
@@ -36,6 +38,8 @@ end
 
 def calculate_with_letters(phrase, letters)
   return if letters.length >= 5
+  $interations += 1
+  exit if $interations == 1000
   WORDCHARS.each {|l| calculate(phrase + ' ' + letters + l); calculate_with_letters(phrase, letters + l) }
 end
 

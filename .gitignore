@@ -1,0 +1,4 @@
+naive
+naive.o
+sha1.o
+shatest.c
