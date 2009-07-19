@@ -49,3 +49,18 @@ end.ceil
 and
 
 1055396435332282460355974701957148648722705431188328357837144064 phrases
+
+It takes my naive ruby implementation 6 seconds to compute 1000 phrases
+== It would take 33466401424793330173642018707418462985879801851481746 years to compute all of the phrase
+
+http://antirez.com/post/some-math-about-the-engineyard-contest.html
+3.25 million per seconds
+== It would take 10297354284551793899582159602282603995655323646 years to compute all of the phrases
+
+sha1 had a 4503599627370496 attack with no collisions found (http://en.wikipedia.org/wiki/SHA_hash_functions)
+In theory brute-force search would require 2**80 (1208925819614629174706176) operations.
+The c implementation would take 4305291380393 years to mount that sort of attack (on one cpu)
+
+sheesh
+
+Prediction: Likely this will end in a tie (if more than one is serious about throwing resources into it). Hamming distance likely in the high 20's
