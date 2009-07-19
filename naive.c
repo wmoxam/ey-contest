@@ -39,6 +39,12 @@ unsigned hamdist()
 
 void calculate(char *phrase)
 {
+    count ++;
+    if(count > 1000000) {
+        printf("Done\n");
+        exit(0);
+    }
+
     SHA1Reset(&sha);
     SHA1Input(&sha, (const unsigned char *) phrase, strlen(phrase));
 
@@ -62,11 +68,8 @@ void calculate_with_letters(char *phrase, int letter_length)
 {
     calculate(phrase);
 
-    count ++;
-    if(count > 100000) {
-        printf("Done\n");
-        exit(0);
-    }
+//printf("%s\n", phrase);
+
 
     int plength = strlen(phrase);
     int blength;
@@ -90,7 +93,7 @@ void calculate_with_letters(char *phrase, int letter_length)
         buffer[blength - 2] = WORDCHARS[i];
 
         calculate(buffer);
-        if(letter_length < 4) {
+        if(letter_length < 5) {
             calculate_with_letters(buffer, letter_length + 1);
         }
     }
