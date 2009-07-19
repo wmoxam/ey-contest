@@ -15,18 +15,26 @@ int best_distance = 1000;
 
 SHA1Context sha;
 
-unsigned hamdist(unsigned x, unsigned y)
+unsigned hamdist()
 {
-    unsigned dist = 0, val = x ^ y;
-
-    // Count the number of set bits (Knuth's algorithm)
-    while(val)
+    unsigned distance = 0;
+    unsigned dist;
+    unsigned val;
+    for(int i = 0; i < 5 ; i++)
     {
-        ++dist; 
-        val &= val - 1;
-    }
+        dist = 0;
+        val = phrase_msg[i] ^ sha.Message_Digest[i];
 
-    return dist;
+        // Count the number of set bits (Knuth's algorithm)
+        while(val)
+        {
+            ++dist;
+            val &= val - 1;
+        }
+
+        distance += dist;
+    }
+    return distance;
 }
 
 void calculate(char *phrase)
@@ -41,11 +49,7 @@ void calculate(char *phrase)
     }
     else
     {
-        int distance = 0;
-        for(int i = 0; i < 5 ; i++)
-        {
-            distance += hamdist(phrase_msg[i], sha.Message_Digest[i]);
-        }
+        int distance = hamdist();
 
         if(distance < best_distance) {
             printf("%d - %s\n", distance, phrase);
