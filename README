@@ -1,0 +1,51 @@
+1000 word dictionary
+12 word phrase
+up to 5 characters appended to phrase digits and letters
+
+How many word sets?
+
+1000!
+-----
+12!(1000-12)!
+
+==
+
+total = (1..12).to_a.inject(1.0) do |t, i|
+  t * (1000-(12.0-i.to_f)/i.to_f)
+end.ceil
+
+== 974997404313888311468767317225111552 sets
+
+times the number of 5 character combinations
+
+10 digits + 26 letters in either case = 62
+
+62*62*62*62*62 == 916132832
+
+== 893227133206731515717579881878483827649675264 phrases
+
+Letter combos of a word
+Since case can be changed, this greatly increases 12 word set size
+
+given N
+Number of combos == ("1" * N).to_i(2) + 1
+
+1 = 2
+2 = 4
+3 = 8
+4 = 16
+5 = 32
+6 = 64
+etc
+
+so now, rather than 1000 word dictionary we have a 32000 word dictionary (if all words are 5 chars long)
+so we have:
+
+total = (1..12).to_a.inject(1.0) do |t, i|
+  t * (32000-(12.0-i.to_f)/i.to_f)
+end.ceil
+
+== 1152012457656667041440530647805828935429644585850109952 sets
+and
+
+1055396435332282460355974701957148648722705431188328357837144064 phrases
