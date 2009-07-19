@@ -40,7 +40,7 @@ unsigned hamdist()
 void calculate(char *phrase)
 {
     count ++;
-    if(count > 1000000) {
+    if(count > 10000000) {
         printf("Done\n");
         exit(0);
     }
@@ -68,9 +68,6 @@ void calculate_with_letters(char *phrase, int letter_length)
 {
     calculate(phrase);
 
-//printf("%s\n", phrase);
-
-
     int plength = strlen(phrase);
     int blength;
 
@@ -92,9 +89,10 @@ void calculate_with_letters(char *phrase, int letter_length)
     for(int i = 0; i < WORDCHARS_LENGTH; i++) {
         buffer[blength - 2] = WORDCHARS[i];
 
-        calculate(buffer);
-        if(letter_length < 5) {
+        if(letter_length < 4) {
             calculate_with_letters(buffer, letter_length + 1);
+        } else {
+            calculate(buffer);
         }
     }
 }
