@@ -61,6 +61,12 @@ sha1 had a 4503599627370496 attack with no collisions found (http://en.wikipedia
 In theory brute-force search would require 2**80 (1208925819614629174706176) operations.
 The c implementation would take 4305291380393 years to mount that sort of attack (on one cpu)
 
-sheesh
+This implementation:
+200000000 iterations per process
+4 processes on a EC2 medium instance
+average time to complete: 269 seconds
+== 2,973,977 comparisons per second, per EC2 medium instance
+== 743,494 comparisons per second, per CPU
+
 
 Prediction: Likely this will end in a tie (if more than one is serious about throwing resources into it). Hamming distance likely in the low 30's - high 20's
