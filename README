@@ -68,5 +68,9 @@ average time to complete: 269 seconds
 == 2,973,977 comparisons per second, per EC2 medium instance
 == 743,494 comparisons per second, per CPU
 
+so 20 cents per 10,706,319,702 comparisons
+
+GPU script:
+./gpusha1 -device 0 6cac827bae250971a8b1fb6e2a96676f7a077b60 Cloud Ruby DHH one eight six active record controller data rspec mongrel MySQL postgresSQL tokyo MRI jruby rubinius memcached exception metaprogramming reflection
 
 Prediction: Likely this will end in a tie (if more than one is serious about throwing resources into it). Hamming distance likely in the low 30's - high 20's
